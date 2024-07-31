@@ -24,12 +24,30 @@ public class EditDistance {
             dp[0][j] = j;
         }
 
+        // Fill in the 2D array with the minimum number of operations required to convert one string into another
+        // (e.g., using the Levenshtein distance)
+        // dp[i][j] represents the minimum number of operations required to convert the first i characters of str1
+        // into the first j characters of str2
+        // If the characters at the current positions are the same, no operation is required (dp[i][j] = dp[i-1][j-1])
+        // Otherwise, we take the minimum of the following:
+        // 1. Insert a character (dp[i][j] = dp[i][j-1] + 1)
+        // 2. Delete a character (dp[i][j] = dp[i-1][j] + 1)
+        // 3. Replace a character (dp[i][j] = dp[i-1][j-1] + 1)
+        // The final value in the bottom-right corner of the 2D array will be the minimum number of operations required
+        // to convert the entire first string into the entire second string
+        // (i.e., the Levenshtein distance between the two strings)
+        // Time complexity: O(m*n), where m is the length of str1 and n is the length of str2
+        // Space complexity: O(m*n)
+        // Reference: https://en.wikipedia.org/wiki/Levenshtein_distance
+        // Reference: https://www.geeksforgeeks.org/edit-distance-dp-5/
+        // Reference: https://leetcode.com/problems/edit-distance/
+        // Reference: https://www.youtube.com/watch?v=We3YDTzNXEk
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
                 if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1];
+                    dp[i][j] = dp[i - 1][j - 1]; // No operation required
                 } else {
-                    dp[i][j] = 1 + Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1]));
+                    dp[i][j] = 1 + Math.min(dp[i - 1][j - 1], Math.min(dp[i - 1][j], dp[i][j - 1])); // Insert, delete, or replace
                 }
             }
         }
