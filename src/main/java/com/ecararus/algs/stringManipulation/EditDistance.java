@@ -52,6 +52,13 @@ public class EditDistance {
             }
         }
 
+        //[0, 1, 2, 3, 4, 5, 6, 7] k&s - increment
+        //[1, 1, 2, 3, 4, 5, 6, 7] i - stay same
+        //[2, 2, 1, 2, 3, 4, 5, 6] t - stay same
+        //[3, 3, 2, 1, 2, 3, 4, 5] t - stay same
+        //[4, 4, 3, 2, 1, 2, 3, 4] e&i - increment
+        //[5, 5, 4, 3, 2, 2, 3, 4] n&n - stay same
+        //[6, 6, 5, 4, 3, 3, 2, 3] &g - increment
         return dp[m][n];
     }
 
