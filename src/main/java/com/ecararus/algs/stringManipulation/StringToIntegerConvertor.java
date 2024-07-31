@@ -57,7 +57,7 @@ public class StringToIntegerConvertor {
 
     public static void main(String[] args) {
         StringToIntegerConvertor convertor = new StringToIntegerConvertor();
-        System.out.println(convertor.convertStringToInteger("abc")); // Output: 42
+        System.out.println(convertor.convertStringToInteger("42")); // Output: 42
         System.out.println(convertor.convertStringToInteger("   -42")); // Output: -42
         System.out.println(convertor.convertStringToInteger("4193 with words")); // Output: 4193
         System.out.println(convertor.convertStringToInteger("words and 987")); // Output: 0
