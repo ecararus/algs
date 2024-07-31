@@ -13,5 +13,38 @@ package com.ecararus.algs.stringManipulation;
  */
 public class LongestCommonPrefix {
 
+    public String findLongestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        String shortest = strs[0];
+        for (String str : strs) {
+            if (str.length() < shortest.length()) {
+                shortest = str;
+            }
+        }
+
+        // Compare the shortest string with the rest of the strings
+        // If the shortest string is not a prefix of the rest of the strings, remove the last character of the shortest string
+        // Repeat the process until the shortest string is a prefix of the rest of the strings
+        // If the shortest string is empty, return an empty string
+        for (int i = 0; i < shortest.length(); i++) {
+            char c = shortest.charAt(i);
+            for (String str : strs) {
+                if (str.charAt(i) != c) {
+                    return shortest.substring(0, i);
+                }
+            }
+        }
+
+        return shortest;
+    }
+
+    public static void main(String[] args) {
+        LongestCommonPrefix lcp = new LongestCommonPrefix();
+        String[] strs = {"flower", "flow", "flight"};
+        System.out.println("Longest common prefix: " + lcp.findLongestCommonPrefix(strs)); // Output: "fl"
+    }
 
 }
