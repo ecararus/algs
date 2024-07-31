@@ -11,4 +11,6 @@ package com.ecararus.algs.stringManipulation;
  * 5. Return the longest palindrome.
  */
 public class LongestPalindromicSubstring {
+
+
 }
