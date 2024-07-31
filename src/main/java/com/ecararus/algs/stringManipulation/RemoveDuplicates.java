@@ -11,4 +11,25 @@ package com.ecararus.algs.stringManipulation;
  * 5. Return the StringBuilder as a string.
  */
 public class RemoveDuplicates {
+
+    public String removeDuplicates(String str) {
+        boolean[] charSet = new boolean[256];
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (!charSet[c]) {
+                charSet[c] = true;
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        RemoveDuplicates remover = new RemoveDuplicates();
+        String testStr = "aabbccddeeff";
+        System.out.println("String after removing duplicates: " + remover.removeDuplicates(testStr)); // Output: "abcdef"
+    }
 }
